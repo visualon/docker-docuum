@@ -22,5 +22,5 @@ LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
 RUN `
   mkdir bin`
-	&& curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v${DOCUUM_VERSION}/docuum-x86_64-pc-windows-msvc.exe `
+	&& curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/${DOCUUM_VERSION}/docuum-x86_64-pc-windows-msvc.exe `
   && /bin/docuum --version

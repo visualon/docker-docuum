@@ -12,7 +12,7 @@ RUN apk add --no-cache curl
 
 ARG DOCUUM_VERSION
 RUN set -ex; \
-  curl -sSfLo /bin/docuum https://github.com/stepchowfun/docuum/releases/download/v${DOCUUM_VERSION}/docuum-x86_64-unknown-linux-musl; \
+  curl -sSfLo /bin/docuum https://github.com/stepchowfun/docuum/releases/download/${DOCUUM_VERSION}/docuum-x86_64-unknown-linux-musl; \
   chmod +x /bin/docuum; \
   docuum --version
 
