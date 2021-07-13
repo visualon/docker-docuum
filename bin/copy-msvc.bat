@@ -4,4 +4,4 @@ for /f "usebackq delims=#" %%a in (`"%ProgramFiles(x86)%\Microsoft Visual Studio
 
 echo source: %VCToolsRedistDir%
 
-xcopy /i "%VCToolsRedistDir%onecore\x64\Microsoft.VC142.CRT" "windows/msvc"
+xcopy /i "%VCToolsRedistDir%onecore\x64\Microsoft.VC142.CRT" "windows/bin"
