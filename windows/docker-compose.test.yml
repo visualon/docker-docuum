@@ -1,4 +1,9 @@
 services:
   sut:
     image: "${IMAGE}"
-    command: --version
+    entrypoint: ''
+    command: docuum --version && docker info
+    volumes:
+      - source: '\\.\pipe\docker_engine'
+        target: '\\.\pipe\docker_engine'
+        type: npipe

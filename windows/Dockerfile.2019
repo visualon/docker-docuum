@@ -3,6 +3,9 @@
 # renovate: datasource=github-releases depName=docuum lookupName=stepchowfun/docuum
 ARG DOCUUM_VERSION=0.18.0
 
+# renovate: datasource=docker depName=docker versioning=docker
+ARG DOCKER_VERSION=20.10.6
+
 FROM mcr.microsoft.com/windows/nanoserver:1809-amd64@sha256:502ecb75e37ada29fa102f92437a0b55504290a715a607d83a2b371811b00d44
 
 USER ContainerAdministrator
@@ -15,14 +18,22 @@ LABEL maintainer="Michael Kriese <michael.kriese@visualon.de>" `
 
 ENTRYPOINT ["/bin/docuum"]
 
-ENV DOCKER_HOST=npipe:////./pipe/docker_engine
+#ENV DOCKER_HOST=npipe:////./pipe/docker_engine
 
-ARG DOCUUM_VERSION
-LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
 # Workaround copy msvc from host, needs bin/copy-msvc.bat call
 COPY bin bin
 RUN setx /M PATH "c:\bin;%PATH%" > nul
+
+ARG DOCKER_VERSION
+RUN `
+  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-${DOCKER_VERSION}.zip; `
+  && tar -C /bin -oxzf file.zip --strip 1 docker/docker `
+  && del /f file.zip `
+  && docker --version
+
+ARG DOCUUM_VERSION
+LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
 RUN `
 	curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
