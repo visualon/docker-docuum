@@ -27,7 +27,7 @@ RUN setx /M PATH "c:\bin;%PATH%" > nul
 
 ARG DOCKER_VERSION
 RUN `
-  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-${DOCKER_VERSION}.zip; `
+  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-%DOCKER_VERSION%.zip; `
   && tar -C /bin -oxzf file.zip --strip 1 docker/docker `
   && del /f file.zip `
   && docker --version
