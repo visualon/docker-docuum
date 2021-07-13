@@ -20,7 +20,7 @@ ENV DOCKER_HOST=npipe:////./pipe/docker_engine
 ARG DOCUUM_VERSION
 LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
-COPY "C:\Windows\System32\vcruntime140.dll" "C:\Windows\System32\vcruntime140.dll"
+COPY msvc/ "C:\Windows\System32\"
 
 RUN `
   mkdir bin`
