@@ -22,6 +22,7 @@ LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
 # Workaround copy msvc from host, needs bin/copy-msvc.bat call
 COPY bin bin
+RUN setx /M PATH "c:\bin;%PATH%" > nul
 
 RUN `
 	&& curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
