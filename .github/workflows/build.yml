@@ -33,9 +33,6 @@ jobs:
         run: ./bin/init.sh
         shell: bash
 
-      - name: Copy msvc
-        run: ./bin/copy-msvc.bat
-
       # ignore not yet existing images
       - name: Fetch the docker images
         run: |

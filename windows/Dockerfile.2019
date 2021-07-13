@@ -21,8 +21,7 @@ ENTRYPOINT ["/bin/docuum"]
 #ENV DOCKER_HOST=npipe:////./pipe/docker_engine
 
 
-# Workaround copy msvc from host, needs bin/copy-msvc.bat call
-COPY bin bin
+RUN mkdir bin
 RUN setx /M PATH "c:\bin;%PATH%" > nul
 
 ARG DOCKER_VERSION
