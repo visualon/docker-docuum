@@ -20,10 +20,7 @@ ENV DOCKER_HOST=npipe:////./pipe/docker_engine
 ARG DOCUUM_VERSION
 LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
-RUN `
-  curl -sSfLo vc_redist.exe https://aka.ms/vs/16/release/vc_redist.x64.exe `
-  && vc_redist.exe /install /quiet /norestart `
-  && del /Q /F vc_redist.exe
+COPY "C:\Windows\System32\vcruntime140.dll" "C:\Windows\System32\vcruntime140.dll"
 
 RUN `
   mkdir bin`
