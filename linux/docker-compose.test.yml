@@ -1,7 +1,7 @@
 services:
   sut:
     image: "${IMAGE}"
-    entrypoint: dumb-init -- sh -c
-    command: docuum --version && docker info
+    entrypoint: ["dumb-init", "--"]
+    command: sh -c 'docuum --version && docker info'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
