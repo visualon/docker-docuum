@@ -1,7 +1,7 @@
 services:
   sut:
     image: "${IMAGE}"
-    entrypoint: ''
+    entrypoint: cmd /c
     command: docuum --version && docker info
     volumes:
       - source: '\\.\pipe\docker_engine'
