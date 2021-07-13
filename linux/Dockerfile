@@ -1,5 +1,5 @@
 # renovate: datasource=github-releases depName=docuum lookupName=stepchowfun/docuum
-ARG DOCUUM_VERSION=0.18.0
+ARG DOCUUM_VERSION=0.19.0
 
 # renovate: datasource=docker depName=docker versioning=docker
 ARG DOCKER_VERSION=20.10.6
