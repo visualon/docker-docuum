@@ -2,6 +2,4 @@
 
 for /f "usebackq delims=#" %%a in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere" -latest -property installationPath`) do call "%%a\Common7\Tools\VsDevCmd.bat" -arch=amd64
 
-echo source: %VCToolsRedistDir%
-
 xcopy /i "%VCToolsRedistDir%onecore\x64\Microsoft.VC142.CRT" "windows/bin"
