@@ -18,7 +18,7 @@ RUN mkdir /build
 ARG DOCKER_VERSION
 RUN set -ex; \
   curl -sSfLo file.tgz https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz; \
-  tar xzvf docker.tgz --strip 1 -C /build docker/docker; \
+  tar xzvf file.tgz --strip 1 -C /build docker/docker; \
   /build/docker --version
 
 ARG DOCUUM_VERSION
