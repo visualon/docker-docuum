@@ -7,7 +7,7 @@
   },
   "packageRules": [
     {
-      "packageNames": ["docuum", "stepchowfun/docuum"],
+      "packageNames": ["docuum", "stepchowfun/docuum", "docker", "moby/moby"],
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     }
   ]
