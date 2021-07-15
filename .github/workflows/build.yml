@@ -33,9 +33,17 @@ jobs:
         run: ./bin/init.sh
         shell: bash
 
-      - run: get-command unpigz
+      - name: Install pigz
+        run: curl -sSfLo c:\windows\system32\unpigz.exe https://kjkpub.s3.amazonaws.com/software/pigz/2.3.1-149/unpigz.exe
 
       # ignore not yet existing images
+      - name: Fetch the docker images
+        run: |
+          docker pull ${{ env.IMAGE }}
+          docker pull ${{ env.IMAGE }}:${{ env.TAG }}
+          docker pull ${{ env.IMAGE }}:${{ env.VERSION }}-${{ env.TAG }}
+        continue-on-error: true
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1.5.1
         with:
