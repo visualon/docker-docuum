@@ -3,7 +3,7 @@
 ARG DOCUUM_VERSION=0.19.2
 
 # renovate: datasource=github-releases depName=docker lookupName=moby/moby
-ARG DOCKER_VERSION=20.10.7
+ARG DOCKER_VERSION=20.10.8
 
 FROM alpine:3.14@sha256:adab3844f497ab9171f070d4cae4114b5aec565ac772e2f2579405b78be67c96 as base
 
