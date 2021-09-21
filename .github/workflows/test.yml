@@ -1,0 +1,11 @@
+name: test
+on:
+  push:
+  
+  
+jobs:
+
+  linux:
+    runs-on: windows-latest
+    steps:
+      - run: tar --version
