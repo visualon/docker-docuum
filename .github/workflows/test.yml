@@ -1,0 +1,15 @@
+name: test
+on:
+  push:
+  
+jobs:
+
+  tests:
+    runs-on: windows-${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [2016, 2019,2022]
+        
+    steps:
+      - run: tar --version
