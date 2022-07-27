@@ -12,6 +12,10 @@ variable "VERSION" {
   default = ""
 }
 
+variable "SYSTEM" {
+  default = "linux"
+}
+
 group "default" {
   targets = ["build_ghcr", "build_docker"]
 }
@@ -29,7 +33,7 @@ group "test" {
 }
 
 target "settings" {
-  context    = "./linux"
+  context    = "./${SYSTEM}"
   inherits   = ["settings"]
   cache-from = ["type=registry,ref=ghcr.io/${OWNER}/cache:${FILE}-${TAG}"]
 }
