@@ -13,11 +13,18 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   windows:
     runs-on: windows-${{ matrix.os }}
 
     timeout-minutes: 60
+
+    permissions:
+      contents: read
+      packages: write
 
     strategy:
       matrix:
@@ -76,6 +83,10 @@ jobs:
 
     timeout-minutes: 30
 
+    permissions:
+      contents: read
+      packages: write
+
     env:
       TAG: linux-amd64
 
@@ -116,6 +127,10 @@ jobs:
 
     timeout-minutes: 30
 
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
 
@@ -154,6 +169,9 @@ jobs:
 
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
