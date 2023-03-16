@@ -8,6 +8,7 @@ env:
   FILE: docuum
   IMAGE: ghcr.io/${{ github.repository_owner }}/docuum
   BUILDKIT_PROGRESS: plain
+  BUILDX_NO_DEFAULT_ATTESTATIONS: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
