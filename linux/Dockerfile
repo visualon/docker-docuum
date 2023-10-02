@@ -1,6 +1,6 @@
 
 # renovate: datasource=github-releases depName=docuum lookupName=stepchowfun/docuum
-ARG DOCUUM_VERSION=0.23.0
+ARG DOCUUM_VERSION=0.23.1
 
 # renovate: datasource=github-releases depName=docker lookupName=moby/moby
 ARG DOCKER_VERSION=24.0.6
