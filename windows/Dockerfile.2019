@@ -4,7 +4,7 @@
 ARG DOCUUM_VERSION=0.23.1
 
 # renovate: datasource=github-releases depName=docker lookupName=moby/moby
-ARG DOCKER_VERSION=24.0.7
+ARG DOCKER_VERSION=24.0.8
 
 FROM mcr.microsoft.com/windows/nanoserver:1809@sha256:14b967649dca50e3e7718b2367d43c461b1f035850694e85f19942bce7e6f616
 
