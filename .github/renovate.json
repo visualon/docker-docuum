@@ -1,13 +1,26 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["visualon/renovate-config", "visualon/renovate-config:automergePatch", ":automergeMinor"],
-  "labels": ["deps"],
+  "extends": [
+    "visualon/renovate-config",
+    "visualon/renovate-config:automergePatch",
+    ":automergeMinor"
+  ],
+  "labels": [
+    "deps"
+  ],
   "digest": {
-    "extends": ["schedule:daily"]
+    "extends": [
+      "schedule:daily"
+    ]
   },
   "packageRules": [
     {
-      "packageNames": ["docuum", "stepchowfun/docuum", "docker", "moby/moby"],
+      "matchPackageNames": [
+        "docuum",
+        "stepchowfun/docuum",
+        "docker",
+        "moby/moby"
+      ],
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     }
   ]
