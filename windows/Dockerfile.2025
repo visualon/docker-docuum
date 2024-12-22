@@ -1,0 +1,39 @@
+# escape=`
+
+# renovate: datasource=github-releases depName=docuum packageName=stepchowfun/docuum
+ARG DOCUUM_VERSION=0.25.0
+
+# renovate: datasource=github-releases depName=docker packageName=moby/moby
+ARG DOCKER_VERSION=27.4.1
+
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:2cf953420d355e2bb428f03c4df80eadb8acad24c9ea8df4da3f7c75d4651310
+
+USER ContainerAdministrator
+
+LABEL maintainer="Michael Kriese <michael.kriese@visualon.de>" `
+  org.opencontainers.image.authors="Michael Kriese <michael.kriese@visualon.de>" `
+  org.opencontainers.image.licenses="MIT" `
+  org.opencontainers.image.source="https://github.com/visualon/docker-docuum" `
+  org.opencontainers.image.url="https://github.com/visualon/docker-docuum"
+
+ENTRYPOINT ["/bin/docuum"]
+
+#ENV DOCKER_HOST=npipe:////./pipe/docker_engine
+
+
+RUN mkdir bin
+RUN setx /M PATH "c:\bin;%PATH%" > nul
+
+ARG DOCKER_VERSION
+RUN `
+  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-%DOCKER_VERSION%.zip `
+  && tar -C /bin -oxzf file.zip --strip 1 docker/docker.exe `
+  && del /f file.zip `
+  && docker --version
+
+ARG DOCUUM_VERSION
+LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
+
+RUN `
+	curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
+  && docuum --version
