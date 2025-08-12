@@ -35,8 +35,6 @@ LABEL maintainer="Michael Kriese <michael.kriese@visualon.de>" `
 
 ENTRYPOINT ["/bin/docuum"]
 
-RUN setx /M PATH "c:\bin;%PATH%" > nul
-
 ARG DOCUUM_VERSION
 LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
