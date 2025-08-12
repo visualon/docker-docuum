@@ -45,7 +45,7 @@ jobs:
         shell: bash
         run: |
           set -ex
-          curl -sSfLo c:\windows\system32\unpigz.exe https://kjkpub.s3.amazonaws.com/software/pigz/2.3.1-149/unpigz.exe
+          curl -sSfLo c:/windows/system32/unpigz.exe https://kjkpub.s3.amazonaws.com/software/pigz/2.3.1-149/unpigz.exe
           unpigz --version
 
       - name: Init
