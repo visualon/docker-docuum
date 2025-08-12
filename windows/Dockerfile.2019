@@ -8,12 +8,12 @@ ARG DOCKER_VERSION=27.5.1
 
 FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:51f6e78e1614200dcfe1ca13eec122082507d64c194820946570343e8d5c4281 AS build
 
-RUN mkdir bin
+RUN mkdir tmp && mkdir bin
 
 ARG DOCKER_VERSION
 RUN `
-  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-%DOCKER_VERSION%.zip `
-  && tar -C /bin -oxzf file.zip --strip 1 docker/docker.exe `
+  curl -sSfLo tmp/file.zip https://download.docker.com/win/static/stable/x86_64/docker-%DOCKER_VERSION%.zip `
+  && tar -C /bin -oxzf tmp/file.zip --strip 1 docker/docker.exe `
   && /bin/docker --version
 
 ARG DOCUUM_VERSION
