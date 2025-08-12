@@ -6,6 +6,23 @@ ARG DOCUUM_VERSION=0.25.0
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
 ARG DOCKER_VERSION=27.5.1
 
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:51f6e78e1614200dcfe1ca13eec122082507d64c194820946570343e8d5c4281 AS build
+
+RUN mkdir bin
+
+ARG DOCKER_VERSION
+RUN `
+  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-%DOCKER_VERSION%.zip `
+  && tar -C /bin -oxzf file.zip --strip 1 docker/docker.exe `
+  && /bin/docker --version
+
+ARG DOCUUM_VERSION
+LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
+
+RUN `
+	curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
+  && /bin/docuum --version
+
 FROM mcr.microsoft.com/windows/nanoserver:1809@sha256:7c720f345ff7784cee12a5464bb5d5222c6348bd6da2cd29d666e49867958b0e
 
 USER ContainerAdministrator
@@ -18,22 +35,9 @@ LABEL maintainer="Michael Kriese <michael.kriese@visualon.de>" `
 
 ENTRYPOINT ["/bin/docuum"]
 
-#ENV DOCKER_HOST=npipe:////./pipe/docker_engine
-
-
-RUN mkdir bin
 RUN setx /M PATH "c:\bin;%PATH%" > nul
-
-ARG DOCKER_VERSION
-RUN `
-  curl -sSfLo file.zip https://download.docker.com/win/static/stable/x86_64/docker-%DOCKER_VERSION%.zip `
-  && tar -C /bin -oxzf file.zip --strip 1 docker/docker.exe `
-  && del /f file.zip `
-  && docker --version
 
 ARG DOCUUM_VERSION
 LABEL org.opencontainers.image.version="${DOCUUM_VERSION}"
 
-RUN `
-	curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
-  && docuum --version
+COPY --from=build /bin /bin
