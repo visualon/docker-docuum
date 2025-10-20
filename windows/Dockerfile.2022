@@ -1,7 +1,7 @@
 # escape=`
 
 # renovate: datasource=github-releases depName=docuum packageName=stepchowfun/docuum
-ARG DOCUUM_VERSION=0.25.0
+ARG DOCUUM_VERSION=0.25.1
 
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
 ARG DOCKER_VERSION=27.5.1
