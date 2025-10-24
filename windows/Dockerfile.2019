@@ -23,7 +23,7 @@ RUN `
 	curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
   && /bin/docuum --version
 
-FROM mcr.microsoft.com/windows/nanoserver:1809@sha256:3031c9d0c35b38cd11d4263551d4f3d105b3e24be4373fb20a5759e5b5b879bc
+FROM mcr.microsoft.com/windows/nanoserver:1809@sha256:1a212d0a200046130ae7a89630b5676121964ec22658bcaf5bb4dd7533cda434
 
 USER ContainerAdministrator
 
