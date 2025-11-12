@@ -6,7 +6,7 @@ ARG DOCUUM_VERSION=0.25.1
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
 ARG DOCKER_VERSION=28.5.2
 
-FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:2c49bcfc2b32e56ef272c3ab4bb77a7653dd617d3a0c1d3afdfc7d67d971c739 AS build
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:88a45eb14a45c111131ce1464d0e3b5ae545e3c0ea8dcbe9cf0b8c60c848f08a AS build
 
 RUN mkdir tmp && mkdir bin
 
@@ -23,7 +23,7 @@ RUN `
 	curl -sSfLo bin/docuum.exe https://github.com/stepchowfun/docuum/releases/download/v%DOCUUM_VERSION%/docuum-x86_64-pc-windows-msvc.exe `
   && /bin/docuum --version
 
-FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:2c49bcfc2b32e56ef272c3ab4bb77a7653dd617d3a0c1d3afdfc7d67d971c739
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2025@sha256:88a45eb14a45c111131ce1464d0e3b5ae545e3c0ea8dcbe9cf0b8c60c848f08a
 
 USER ContainerAdministrator
 
