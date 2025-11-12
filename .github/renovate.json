@@ -22,6 +22,12 @@
         "moby/moby"
       ],
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
+    },
+    {
+      "description": "group docker digests",
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "groupName": "docker-digests"
     }
   ]
 }
